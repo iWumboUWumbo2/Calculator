@@ -8,10 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "Operator.h"
-
+#import "Utils.h"
 
 @interface Expression : NSObject {
 	NSDictionary *operators;
+    NSDictionary *oneInputFunctions;
+    NSDictionary *twoInputFunctions;
+    NSMutableDictionary *defaults;
+    NSMutableDictionary *variables;
+    
 	NSMutableArray *tokens;
 	NSMutableArray *outputQueue;
 }

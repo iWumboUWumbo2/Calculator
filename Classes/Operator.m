@@ -16,15 +16,15 @@
 @synthesize associativity;
 @synthesize type;
 
-- (id)initWithOperation:(unichar)anOperation 
-			  precedence:(NSInteger)aPrecedence 
-		   associativity:(OperatorAssociativity)anAssociativity 
-					type:(OperatorType)aType {
+- (id)initWithOperation:(Function)operation
+			  precedence:(NSInteger)precedence
+		   associativity:(OperatorAssociativity)associativity
+					type:(OperatorType)type {
 	if (self = [super init]) {
-		[self setOperation:anOperation];
-		[self setPrecedence:aPrecedence];
-		[self setAssociativity:anAssociativity];
-		[self setType:aType];
+		[self setOperation:operation];
+		[self setPrecedence:precedence];
+		[self setAssociativity:associativity];
+		[self setType:type];
 	}
 	
 	return self;
@@ -32,6 +32,24 @@
 
 - (void)dealloc {
 	[super dealloc];
+}
+
++ (id)unaryOperatorWithOperation:(Function)operation
+                       precedence:(NSInteger)precedence
+                    associativity:(OperatorAssociativity)associativity {
+    return [[[self alloc] initWithOperation:operation
+                                precedence:precedence
+                             associativity:associativity
+                                      type:OperatorTypeUnary] autorelease];
+}
+
++ (id)binaryOperatorWithOperation:(Function)operation
+                       precedence:(NSInteger)precedence
+                    associativity:(OperatorAssociativity)associativity {
+    return [[[self alloc] initWithOperation:operation
+                                precedence:precedence
+                             associativity:associativity
+                                      type:OperatorTypeBinary] autorelease];
 }
 
 @end

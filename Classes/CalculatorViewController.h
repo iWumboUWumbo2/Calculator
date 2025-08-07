@@ -16,7 +16,7 @@
 	Expression *expr;
 }
 
-- (IBAction)createLayout;
+- (IBAction)createPortraitLayout;
 - (IBAction)buttonSelected:(id)sender;
 - (IBAction)clearSelected:(id)sender;
 - (IBAction)equalsSelected:(id)sender;

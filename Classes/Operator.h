@@ -7,27 +7,37 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Utils.h"
 
-typedef enum {
+typedef NS_ENUM(NSInteger, OperatorAssociativity) {
 	OperatorAssociativityLeft = 0,
 	OperatorAssociativityRight = 1
-} OperatorAssociativity;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, OperatorType) {
 	OperatorTypeBinary = 0,
 	OperatorTypeUnary = 1
-} OperatorType;
+};
 
-@interface Operator : NSObject 
+@interface Operator : NSObject
 
-@property (assign) unichar operation;
+@property (assign) Function operation;
 @property (assign) NSInteger precedence;
 @property (assign) OperatorAssociativity associativity;
 @property (assign) OperatorType type;
 
-- (id)initWithOperation:(unichar)operation 
-			 precedence:(NSInteger)precedence 
+
+- (id)initWithOperation:(Function)operation
+			 precedence:(NSInteger)precedence
 		  associativity:(OperatorAssociativity)associativity 
 				   type:(OperatorType)type;
+
++ (id)unaryOperatorWithOperation:(Function)operation
+                       precedence:(NSInteger)precedence
+                   associativity:(OperatorAssociativity)associativity;
+
++ (id)binaryOperatorWithOperation:(Function)operation
+                       precedence:(NSInteger)precedence
+                    associativity:(OperatorAssociativity)associativity;
 
 @end
